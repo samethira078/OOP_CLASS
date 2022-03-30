@@ -1,6 +1,6 @@
 <?php
 
-class Pikachu
+class Pikachu extends Pokemon
 {
 
 }
