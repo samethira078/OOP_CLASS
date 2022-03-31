@@ -2,7 +2,11 @@
 
 class EnergyType
 {
-    public static function pokemon_energy($value){
-        return $value;
+    protected static $name;
+
+    static function add($name){
+        self::$name = $name;
+
+        return self::$name;
     }
 }

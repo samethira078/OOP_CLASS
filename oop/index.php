@@ -1,28 +1,23 @@
 <?php
-include 'Pokemon.php';
-include 'Attack.php';
-include 'EnergyType.php';
-include 'Resistance.php';
-include 'Weakness.php';
-include 'Gevecht.php';
+include_once 'Pokemon.php';
+include_once 'Attack.php';
+include_once 'EnergyType.php';
+include_once 'Resistance.php';
+include_once 'Weakness.php';
+include_once 'Gevecht.php';
+include_once 'Statistieken.php';
+include_once 'Pikachu.php';
+include_once 'Charmeleon.php';
+$pikachu = new Pikachu( 'Pikachu');
+$charmeleon = new Charmeleon('Charmeleon');
 
-$pikachu = new Pokemon('Pikachu');
-$pikachu->attack(Attack::pokemon_attack(array('Electric Ring' => 50, 'Pika Punch' => 20)));
-$pikachu->energy(EnergyType::pokemon_energy('Lightning'));
-$pikachu->resistance(Resistance::pokemon_resistance(array('Fighting' => 20)));
-$pikachu->weakness(Weakness::pokemon_weakness(array('Fire' => 1,5)));
+    $fight = new Gevecht($pikachu, $charmeleon);
+    echo 'Er zijn nu '.Statistieken::getPopulation(). ' pokemon levend!';
+    $fight->battle();
+    echo "<br>";
 
-
-$charmeleon = new Pokemon('Charmeleon');
-$charmeleon->attack(Attack::pokemon_attack(array('Head Butt Ring' => 10, 'Flare' => 30)));
-$charmeleon->energy(EnergyType::pokemon_energy('Fire'));
-$charmeleon->resistance(Resistance::pokemon_resistance(array('Lightning' => 10)));
-$charmeleon->weakness(Weakness::pokemon_weakness(array('water' => 2)));
-
-$battle = new Gevecht();
-
-
-echo "<pre>";
-print_r($pikachu);
-print_r($charmeleon);
-echo "</pre>";
+    foreach ($fight->result as $result){
+        echo '<br>'. $result . '<br>';
+    }
+    echo "<br>";
+    echo 'Er zijn nu '.Statistieken::getPopulation(). ' pokemon levend!';
